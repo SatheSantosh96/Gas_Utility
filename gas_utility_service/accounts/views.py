@@ -29,8 +29,11 @@ class CustomerRegistrationView(CreateView):
         return super().form_valid(form)
     
 
+# class ProfileView(LoginRequiredMixin, View):
+#     def get(self, request, *args, **kwargs):
+#         if request.user.is_staff:
+#             return redirect(reverse_lazy('support_request_list'))  # Redirect staff users
+#         return redirect(reverse_lazy('service_request_list'))  # Redirect normal users
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        if request.user.is_staff:
-            return redirect(reverse_lazy('support_request_list'))  # Redirect staff users
-        return redirect(reverse_lazy('service_request_list'))  # Redirect normal users
+        return render(request, 'accounts/profile.html', {'user': request.user})

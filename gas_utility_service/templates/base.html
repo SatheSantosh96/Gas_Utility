@@ -13,14 +13,14 @@
             <div>
                 {% if user.is_authenticated %}
                     {% if user.is_staff %}
-                        {% comment %} <a href="{% url 'support_request_list' %}" class="mr-4">Support Dashboard</a> {% endcomment %}
+                        <a href="{% url 'support_request_list' %}" class="mr-4">Support Dashboard</a>
                     {% else %}
-                    <a href="{% url 'service_request_list' %}" class="mr-4">My Requests</a>
+                        <a href="{% url 'service_request_list' %}" class="mr-4">My Requests</a>
                     {% endif %}
                     <a href="{% url 'profile' %}" class="mr-4">Profile</a>
                     <form method="post" action="{% url 'logout' %}" class="inline">
                         {% csrf_token %}
-                        <button type="submit">Logout</button>
+                        <button type="submit" class="bg-red-500 px-3 py-1 rounded text-white">Logout</button>
                     </form>
                 {% else %}
                     <a href="{% url 'login' %}" class="mr-4">Login</a>
@@ -42,10 +42,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
