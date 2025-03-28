@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-10">
+    <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
+        <h2 class="text-2xl mb-6 text-center">Update Service Request Status</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block mb-2">Status</label>
+                {{ form.status }}
+                {% if form.status.errors %}
+                    <p class="text-red-500">{{ form.status.errors }}</p>
+                {% endif %}
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">
+                Update Status
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
